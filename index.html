@@ -1,0 +1,131 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sargun Universe 💖</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+// Background ambient sound
+let ambience = new Audio('https://cdn.pixabay.com/audio/2022/03/15/audio_5c1d1f1cfa.mp3');
+ambience.loop = true;
+ambience.volume = 0.3;window.addEventListener('click',()=>{ if(ambience.paused) ambience.play(); },{ once:true });
+
+tailwind.config = { darkMode: 'class' }
+
+  </script>
+  <style>
+    @keyframes float { 0%{transform:translateY(0)} 50%{transform:translateY(-20px)} 100%{transform:translateY(0)} }
+    .float { animation: float 6s ease-in-out infinite; }
+  </style>
+</head>
+<body class="min-h-screen bg-gradient-to-b from-pink-100 via-rose-50 to-sky-100"><!-- PAGE 1 --><div id="page1">
+<header class="text-center py-16 px-6 relative overflow-hidden">
+  <div id="stars" class="absolute inset-0"></div>
+  <h1 class="text-6xl font-extrabold text-pink-600 float">✨ Sargun ✨</h1>
+  <p class="mt-6 text-lg">Welcome to your tiny universe 💫</p>
+</header><main class="max-w-5xl mx-auto px-6 space-y-24"><!-- 10 Reasons --><section class="bg-white/80 rounded-3xl p-10 shadow-xl">
+<h2 class="text-3xl font-bold mb-6">10 Reasons I Love You 💕</h2>
+<ol class="list-decimal list-inside space-y-2">
+<li>Your kindness without trying</li>
+<li>The way you listen</li>
+<li>Your laughter</li>
+<li>Your patience</li>
+<li>Your honesty</li>
+<li>Your softness</li>
+<li>Your strength</li>
+<li>Your loyalty</li>
+<li>Your presence</li>
+<li>You, just being you</li>
+</ol>
+</section><!-- Compliment Generator --><section class="bg-white/80 rounded-3xl p-10 shadow-xl text-center">
+<h2 class="text-3xl font-bold mb-4">Compliment Generator 🌸</h2>
+<p id="compliment" class="mb-4">Click the button 💖</p>
+<button onclick="genCompliment()" class="px-6 py-3 bg-pink-400 text-white rounded-full">Give Compliment</button>
+</section><!-- Funny Cat --><section class="text-center">
+<h2 class="text-3xl font-bold mb-4">Cat Mode 🐱</h2>
+<div id="cat" class="text-6xl cursor-pointer">🐈</div>
+<p class="mt-2">Tap the cat</p>
+</section><!-- Cow Sound --><section class="text-center">
+<h2 class="text-3xl font-bold mb-4">Cow Button 🐄</h2>
+<button onclick="moo()" class="px-6 py-3 bg-amber-300 rounded-full">Moo</button>
+</section><!-- Cookies --><section class="bg-white/80 rounded-3xl p-10 shadow-xl text-center">
+<h2 class="text-3xl font-bold mb-4">Magic Cookies 🍪</h2>
+<div id="cookies" class="flex gap-4 justify-center"></div>
+<p id="cookieMsg" class="mt-4"></p>
+</section><!-- Birthday Candles --><section class="bg-white/80 rounded-3xl p-10 shadow-xl text-center">
+<h2 class="text-3xl font-bold mb-4">Make a Wish 🕯️</h2>
+<p class="mb-4">Tap the candles to blow them out</p>
+<div id="candles" class="flex justify-center gap-4 text-4xl cursor-pointer"></div>
+<p id="wishMsg" class="mt-4 font-semibold"></p>
+</section><!-- Navigation --><section class="text-center">
+<button onclick="gotoPage2()" class="mt-10 px-8 py-4 bg-gradient-to-r from-pink-500 to-rose-500 text-white rounded-full">Go to Page 2 ➜</button>
+</section>
+</main>
+</div><!-- PAGE 2 --><div id="page2" class="hidden">
+<header class="text-center py-16">
+<h1 class="text-5xl font-bold">More Surprises 💖</h1>
+</header><main class="max-w-4xl mx-auto px-6 space-y-24"><!-- Tic Tac Toe --><section class="bg-white/80 p-10 rounded-3xl shadow-xl text-center">
+<h2 class="text-3xl font-bold mb-4">Tic Tac Toe ❌⭕</h2>
+<p>You always win 💖</p>
+<button onclick="winGame()" class="px-6 py-3 bg-green-400 rounded-full">Play</button>
+<p id="tttMsg" class="mt-4"></p>
+</section><!-- Terms --><section class="bg-white/80 p-10 rounded-3xl shadow-xl">
+<h2 class="text-3xl font-bold mb-4">Friendship Terms & Conditions 📜</h2>
+<ul class="list-disc list-inside space-y-2">
+<li>Unlimited laughter</li>
+<li>No replacing each other</li>
+<li>Support during bad days</li>
+<li>Celebrating wins together</li>
+<li>Friendship auto-renews forever</li>
+</ul>
+</section><section class="text-center">
+<button onclick="gotoPage1()" class="px-8 py-4 bg-pink-400 text-white rounded-full">⬅ Back</button>
+</section>
+</main>
+</div><script>
+// Stars
+const stars=document.getElementById('stars');
+for(let i=0;i<30;i++){const s=document.createElement('div');s.textContent='✨';s.style.position='absolute';s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';s.style.animation=`float ${4+Math.random()*6}s infinite`;stars.appendChild(s)}
+
+// Compliments
+const compliments=[
+'You make everything softer','You are incredibly special','You matter more than you know','You light up rooms','You are deeply loved'
+];
+function genCompliment(){document.getElementById('compliment').textContent=compliments[Math.floor(Math.random()*compliments.length)]}
+
+// Cat
+const cat=document.getElementById('cat');
+cat.onclick=()=>{cat.style.transform='translateX(200px) rotate(360deg)';setTimeout(()=>cat.style.transform='',800)}
+
+// Cow
+function moo(){new Audio('https://www.soundjay.com/animal/cow-moo1.mp3').play()}
+
+// Candles
+const candleDiv=document.getElementById('candles');
+let lit=5;
+for(let i=0;i<5;i++){
+  const c=document.createElement('div');
+  c.textContent='🕯️';
+  c.onclick=()=>{
+    if(c.textContent==='🕯️'){
+      c.textContent='💨';
+      lit--;
+      if(lit===0){document.getElementById('wishMsg').textContent='Wish locked ✨ May all your dreams come true 💖';}
+    }
+  };
+  candleDiv.appendChild(c);
+}
+
+// Cookies
+const msgs=['You are loved 💖','Smile!','You are safe here','Best person ever'];
+const cookieDiv=document.getElementById('cookies');
+msgs.forEach((_,i)=>{const b=document.createElement('button');b.textContent='🍪';b.className='text-4xl';b.onclick=()=>document.getElementById('cookieMsg').textContent=msgs[i];cookieDiv.appendChild(b)})
+
+// TicTacToe
+function winGame(){document.getElementById('tttMsg').textContent='You won 🎉 Here is extra love 💕'}
+
+// Pages
+function gotoPage2(){page1.classList.add('hidden');page2.classList.remove('hidden')}
+function gotoPage1(){page2.classList.add('hidden');page1.classList.remove('hidden')}
+</script></body>
+</html>
